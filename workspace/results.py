@@ -41,7 +41,6 @@ def main():
             target_text = re.sub(r'[^\w\s]', '', target_text)
 
             result_text = readtext(RESULT + data)
-
             result_text = " ".join("".join(result_text).splitlines())
             result_text = re.sub(r'[^\w\s]', '', result_text)
             result_text = re.sub(' +', ' ', result_text)

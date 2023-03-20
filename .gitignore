@@ -1,2 +1,4 @@
 workspace/*/*.jpg
 workspace/*/*.txt
+workspace/.mypy_cache
+workspace/.ruff_cache
