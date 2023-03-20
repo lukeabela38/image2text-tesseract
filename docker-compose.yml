@@ -1,0 +1,7 @@
+version: '3.3'
+services:
+    imaget2text:
+        container_name: imaget2text
+        volumes:
+          - '$PWD/workspace/:/workspace/'
+        image: imaget2text
