@@ -4,8 +4,8 @@ import pytesseract
 import statistics
 #from postprocessing import *
 
-INPUT_PATH = "michalak_1_outputs/"
-OUTPUT_PATH = "michalak_1_text/"
+INPUT_PATH = "input/"
+OUTPUT_PATH = "output/"
 CONFIG = "--psm 6 --oem 1"
 
 def pipeline(file):
