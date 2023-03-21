@@ -4,10 +4,10 @@ import pytesseract
 import numpy as np
 from tqdm import tqdm
 
-INPUT_PATH: str = "inputs_robin/"
-OUTPUT_PATH: str = "text_pred_robin/"
-CONFIG: str = "--psm 6 --oem 1"
-#CONFIG: str = "--psm 7 --oem 1"
+INPUT_PATH: str = "inputs_control/"
+OUTPUT_PATH: str = "text_pred_control/"
+#CONFIG: str = "--psm 6 --oem 1"
+CONFIG: str = "--psm 7 --oem 1"
 
 def pipeline(file) -> str:
 
