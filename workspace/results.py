@@ -7,9 +7,9 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from tqdm import tqdm
 
 TARGET = "text_real/"
-RESULT = "text_pred/"
+RESULT = "text_pred_robin/"
 HEADER = ["INDEX, TARGET, RESULT, COSINE SIMILARITY SCORE"]
-CSVPATH = "results.csv"
+CSVPATH = "results_robin.csv"
 
 def normalize(text):
     return text
