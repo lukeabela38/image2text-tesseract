@@ -2,12 +2,14 @@ import os
 import re
 import csv
 import statistics
+import sklearn
 from sklearn.feature_extraction.text import TfidfVectorizer
+from tqdm import tqdm
 
-TARGET = "/workspace/text/"
-RESULT = "/workspace/result/"
+TARGET = "text_real/"
+RESULT = "text_pred/"
 HEADER = ["INDEX, TARGET, RESULT, COSINE SIMILARITY SCORE"]
-CSVPATH = "/workspace/results.csv"
+CSVPATH = "results.csv"
 
 def normalize(text):
     return text
@@ -20,10 +22,12 @@ def cosine_sim(text1, text2):
 
 def readtext(path):
 
-    with open(path) as f:
-        lines = f.readlines()
+    try:
+        with open(path, "rb") as f:
+            return f.readlines()[0].decode("utf-8")
+    except:
+        return ""
 
-    return lines
 
 def main():
 
@@ -36,17 +40,17 @@ def main():
         writer = csv.writer(file)
         writer.writerow(HEADER)
 
-        for i, data in enumerate(target_files):
-            target_text = readtext(TARGET + data)[0]
+        for i, data in tqdm(enumerate(target_files)):
+
+            target_text = readtext(f"{TARGET}{data}")
             target_text = re.sub(r'[^\w\s]', '', target_text)
 
-            result_text = readtext(RESULT + data)
-            result_text = " ".join("".join(result_text).splitlines())
+            data = f"{data[:-5]}{int(data[-5]) * 2}.txt"
+            result_text = readtext(f"{RESULT}{data}")
             result_text = re.sub(r'[^\w\s]', '', result_text)
-            result_text = re.sub(' +', ' ', result_text)
 
             score = cosine_sim(target_text, result_text)
-            print(i, target_text, result_text, score)
+            #print(i, target_text, result_text, score)
             scores.append(score)
             writer.writerow([i, target_text, result_text, score])
 
